@@ -17,6 +17,20 @@
     `;
 	$: paragraphStyle = `
         text-shadow: ${textShadow};`;
+
+	let styles = {
+		'shadow': '0 0 1px black',
+		'many-shadows': '0 0 1px black,',
+		'cool-filter' : 'drop-shadow(-1px -1px 0 red) drop-shadow(1px 1px 0 blue)'
+	};
+
+	styles['many-shadows'] = styles['many-shadows'].repeat(4).slice(0, -1);
+
+	$: cssVarStyles = Object.entries(styles)
+		.map(([key, value]) => `--${key}:${value}`)
+		.join(';');
+
+	const pixels = '2px';
 </script>
 
 <svelte:head>
@@ -24,22 +38,30 @@
 </svelte:head>
 
 <div class="dots" />
-<section>
+<section style="{cssVarStyles}">
 	<div class="name">
 		<h1>Isaac Giuricich</h1>
 		<br />
-		<p>カタカナ</p>
+		<!-- <p>カタカナ</p> -->
 	</div>
 
 	<div class="name name2">
 		<h1>Isaac Giuricich</h1>
 		<br />
-		<p>カタカナ</p>
+		<!-- <p>カタカナ</p> -->
 	</div>
-	<div class="text">
+	<div class="about">
+		<!-- <p class="japanese">イサク・ジュリシッチ</p> -->
+		<p>i am from canada</p>
+		<p>i make websites</p>
+		<p><em>i wish i were a bird</em></p>
+
+	</div>
+
+	<!-- <div class="text">
 		<p>{textShadow}</p>
-	</div>
-	<TextShadowProps bind:data={textShadowData} />
+	</div> -->
+	<!-- <TextShadowProps bind:data={textShadowData} /> -->
 </section>
 
 <style>
@@ -54,23 +76,6 @@
 		background-repeat: no-repeat;
 		/* height: 200vh; */
 	}
-	.dots {
-		width: 100%;
-		height: 200lvh;
-		background: url('/images/dots.png');
-		position: absolute;
-		background-size: cover;
-		image-rendering: pixelated;
-		image-rendering: crisp-edges;
-		background-repeat: no-repeat;
-		z-index: 1;
-		pointer-events: none;
-		/* transition: all 100ms ease-out; */
-		filter: blur(10px);
-	}
-	.dots:hover {
-		/* filter: blur(0); */
-	}
 	section {
 		height: 100%;
 		width: 100%;
@@ -78,15 +83,31 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+		/* filter: var(--cool-filter); */
+	}
+	section::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 200vh;
+		background: url('/images/dots.png');
+		background-size: cover;
+		image-rendering: pixelated;
+		image-rendering: crisp-edges;
+		background-repeat: no-repeat;
+		filter: var(--cool-filter);
+		/* filter: blur(10px); */
 	}
 	.name {
 		width: max-content;
-		position: fixed;
+		position: absolute;
 		top: 0rem;
 		left: 0;
 		transform: rotate(-50deg) translate(-80%, 100%);
 		transition: all 100ms ease-out;
-		filter: blur(2px);
+		/* filter: blur(2px); */
 	}
 	.name2 {
 		transform: rotate(-50deg) translate(20%, 100%);
@@ -97,58 +118,49 @@
 	}
 	.name:hover {
 		/* text-shadow: 0 0 8px #ee28ca; */
-		filter: drop-shadow(0 0 8px #ee28ca);
+		/* filter: drop-shadow(0 0 8px #ee28ca); */
 		/* filter: blur(0); */
 		z-index: 2;
-	}
-	.name::before {
-		content: '';
-		z-index: -1;
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		background: linear-gradient(0deg, #f4cef0 -91%, #844660 200%);
-		transform: translate3d(0px, 0px, 0) scale(1);
-		filter: blur(30px);
-		opacity: 0.73;
-		transition: opacity 0.3s;
-		border-radius: inherit;
-	}
-
-	.name::after {
-		content: '';
-		z-index: -1;
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		background: inherit;
-		border-radius: inherit;
+		filter: var(--cool-filter);
 	}
 
 	h1,
 	p {
-		font-family: serif;
-		/* font-weight: ; */
-		font-size: 3rem;
-		text-rendering: auto;
-		color: #fff;
-		/* text-shadow: 0 0 5px #fff; */
-		text-shadow: inherit;
-		/* background-color: black; */
-		border-radius: 12px;
+		font-family: 'PP Mondwest';
+		font-size: 10rem;
+		color: white;
+		/* text-shadow: var(--many-shadows) ; */
+		/* text-shadow: 0 0 5px white; */
+		/* text-shadow: inherit; */
+		background-color: #000;
+		/* border-radius: 12px; */
+		/* line-height: 30px; */
+		image-rendering: pixelated;
+		/* line-height: 0; */
+		/* border-top: 6rem solid black;
+		border-bottom: 6rem solid black; */
+		/* border: 1px solid black; */
+
 	}
 	.japanese {
 		font-family: 'Yu Gothic';
 		font-size: 3rem;
 		text-rendering: auto;
 		color: #fff;
-		/* text-shadow: 0 0 5px #fff;
-        background-color: black; */
+		text-shadow: 0 0 5px #fff;
+        background-color: black;
 		border-radius: 12px;
 		writing-mode: vertical-rl;
+	}
+	.about {
+		position: absolute;
+		top: 110vh;
+		right: 5px;
+		width: max-content;
+		display: flex;
+		flex-direction: column;
+		/* border: 1px solid white; */
+		background: black;
+		padding: 16px;
 	}
 </style>
