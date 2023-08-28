@@ -41,13 +41,11 @@
 <section style="{cssVarStyles}">
 	<div class="name">
 		<h1>Isaac Giuricich</h1>
-		<br />
 		<!-- <p>カタカナ</p> -->
 	</div>
 
 	<div class="name name2">
 		<h1>Isaac Giuricich</h1>
-		<br />
 		<!-- <p>カタカナ</p> -->
 	</div>
 	<div class="about">
@@ -66,23 +64,19 @@
 
 <style>
 	@import url('reset.css');
-
-	:global(body) {
-		/* background: url("/images/dots.png"); */
-		background-color: black;
-		background-size: cover;
-		image-rendering: pixelated;
-		image-rendering: crisp-edges;
-		background-repeat: no-repeat;
-		/* height: 200vh; */
+	@font-face {
+		font-family: "PP Mondwest Bold";
+		src: url("/PPMondwest-Bold.woff") format("woff")
 	}
+
 	section {
-		height: 100%;
-		width: 100%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+		height: 100rem;
+		position: relative;
+
 		/* filter: var(--cool-filter); */
 	}
 	section::before {
@@ -90,24 +84,39 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 100%;
-		height: 200vh;
+		width: 100vw;
+		height: 100rem;
 		background: url('/images/dots.png');
 		background-size: cover;
 		image-rendering: pixelated;
 		image-rendering: crisp-edges;
 		background-repeat: no-repeat;
 		filter: var(--cool-filter);
-		/* filter: blur(10px); */
+	}
+	.about {
+		font-size: 9vw;
+		position: absolute;
+		width: 10rem;
+		bottom: 1rem;
+		right: 1rem;
+		width: max-content;
+		display: flex;
+		flex-direction: column;
+		border: 1px solid white;
+		background: black;
+		padding: 1rem;
 	}
 	.name {
+		font-size: 10rem;
 		width: max-content;
+		word-wrap: none;
+		white-space: nowrap;
 		position: absolute;
 		top: 0rem;
 		left: 0;
 		transform: rotate(-50deg) translate(-80%, 100%);
 		transition: all 100ms ease-out;
-		/* filter: blur(2px); */
+		overflow: hidden;
 	}
 	.name2 {
 		transform: rotate(-50deg) translate(20%, 100%);
@@ -117,29 +126,22 @@
 		max-width: fit-content;
 	}
 	.name:hover {
-		/* text-shadow: 0 0 8px #ee28ca; */
-		/* filter: drop-shadow(0 0 8px #ee28ca); */
-		/* filter: blur(0); */
-		z-index: 2;
+		/* z-index: 2; */
 		filter: var(--cool-filter);
+	}
+	h1 {
+		font-weight: bold;
 	}
 
 	h1,
 	p {
-		font-family: 'PP Mondwest';
-		font-size: 10rem;
+		font-family: 'PP Mondwest Bold';
+		font-size: inherit;
+		/* font-weight: 100; */
 		color: white;
-		/* text-shadow: var(--many-shadows) ; */
-		/* text-shadow: 0 0 5px white; */
-		/* text-shadow: inherit; */
+		text-rendering: optimizeLegibility;
 		background-color: #000;
-		/* border-radius: 12px; */
-		/* line-height: 30px; */
 		image-rendering: pixelated;
-		/* line-height: 0; */
-		/* border-top: 6rem solid black;
-		border-bottom: 6rem solid black; */
-		/* border: 1px solid black; */
 
 	}
 	.japanese {
@@ -152,15 +154,15 @@
 		border-radius: 12px;
 		writing-mode: vertical-rl;
 	}
-	.about {
-		position: absolute;
-		top: 110vh;
-		right: 5px;
-		width: max-content;
-		display: flex;
-		flex-direction: column;
-		/* border: 1px solid white; */
-		background: black;
-		padding: 16px;
+	
+
+	:global(body) {
+		/* background: url("/images/dots.png"); */
+		background-color: black;
+		background-size: cover;
+		image-rendering: pixelated;
+		image-rendering: crisp-edges;
+		background-repeat: no-repeat;
+		overflow-x: hidden;
 	}
 </style>
