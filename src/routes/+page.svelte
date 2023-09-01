@@ -19,10 +19,10 @@
         text-shadow: ${textShadow};`;
 
 	let styles = {
-		'shadow': '0 0 1px black',
+		shadow: '0 0 1px black',
 		'many-shadows': '0 0 1px black,',
-		'cool-filter' : 'drop-shadow(-1px -1px 0 red) drop-shadow(1px 1px 0 blue)',
-		'invert-filter' : 'drop-shadow(-1px -1px 0 cyan) drop-shadow(1px 1px 0 yellow)'
+		'cool-filter': 'drop-shadow(-1px -1px 0 red) drop-shadow(1px 1px 0 blue)',
+		'invert-filter': 'drop-shadow(-1px -1px 0 cyan) drop-shadow(1px 1px 0 yellow)'
 	};
 
 	styles['many-shadows'] = styles['many-shadows'].repeat(4).slice(0, -1);
@@ -39,170 +39,154 @@
 </svelte:head>
 
 <div class="dots" />
-<section style="{cssVarStyles}">
+<section style={cssVarStyles}>
 	<div class="name">
-		<h1>Isaac Giuricich</h1>
-		<!-- <p>カタカナ</p> -->
+		<h1>Isaac GiuricichIsaac GiuricichIsaac Giuricich</h1>
 	</div>
 
-	<div class="name name2">
-		<h1>Isaac Giuricich</h1>
-		<!-- <p>カタカナ</p> -->
+	<div class="boxes">
+		<div class="box about">
+			<p>i am from canada</p>
+			<p>i make websites</p>
+			<p><em>i wish i were a bird</em></p>
+		</div>
+		<div class="box showcase">
+			<p>i do <em>not</em> play undertale</p>
+		</div>
+		<div class="box contact">
+			<p>checkout my:</p>
+			<p>github</p>
+			<p>linkedin</p>
+			<p>email</p>
+			<p>isaac@giuricich.ca</p>
+		</div>
 	</div>
-	<div class="about">
-		<!-- <p class="japanese">イサク・ジュリシッチ</p> -->
-		<p>i am from canada</p>
-		<p>i make websites</p>
-		<p><em>i wish i were a bird</em></p>
-
-	</div>
-
-	<!-- <div class="text">
-		<p>{textShadow}</p>
-	</div> -->
-	<!-- <TextShadowProps bind:data={textShadowData} /> -->
 </section>
 
 <style>
 	@import url('reset.css');
 	@font-face {
-		font-family: "PP Mondwest Bold";
-		src: url("/PPMondwest-Bold.woff") format("woff")
+		font-family: 'PP Mondwest Bold';
+		src: url('/PPMondwest-Bold.woff') format('woff');
 	}
 
 	section {
-		/* tall screens ONLY */
-		max-height: 100vh;
-
-		/* square and wide screens */
-
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		height: 100rem;
-		min-height: 100vh;
 		position: relative;
-
-		/* filter: var(--cool-filter); */
+		/* for name text overflow */
+		width: 100%;
+		overflow: hidden;
 	}
 	section::before {
-	/* dots */
+		/* dots */
 		content: '';
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100vw;
-		height: 100rem;
-		min-height: 100vh;
-
-		
+		height: 100%;
 
 		background: url('/images/dots.png');
-		background-size: cover;
-		image-rendering: pixelated;
-		image-rendering: crisp-edges;
 		background-repeat: no-repeat;
+		background-size: cover;
+		image-rendering: crisp-edges;
 		filter: var(--cool-filter);
+		z-index: -1;
 	}
-	.about {
-		font-size: 9vw;
-		position: absolute;
-		width: 10rem;
-		/* height: 60vh; */
-		bottom: 1rem;
-		right: 1rem;
-		width: max-content;
+	.boxes {
+		height: 100%;
+		width: 100%;
 		display: flex;
 		flex-direction: column;
-		border: 1px solid white;
+		gap: 25vw;
+
+		margin-top: 85vw;
+	}
+	.box {
+		font-size: 5vw;
+		display: flex;
+		flex-direction: column;
 		background: black;
-		padding: 1rem;
+		border: 1px solid white;
+		padding: 4vw;
+		width: fit-content;
+	}
+	.about {
+		align-self: self-end;
+		width: fit-content;
+		font-size: 8vw;
+	}
+	.showcase {
+		font-size:5vw
 	}
 	.name {
-		/* tall styles */
+		/* display: none; */
 		font-size: 11vw;
-
-		/* square and wide styles */
-		width: max-content;
-		word-wrap: none;
 		white-space: nowrap;
-		position: absolute;
-		top: 0rem;
-		left: 0;
-		transform: rotate(-50deg) translate(-80%, 100%);
-		transition: all 100ms ease-out;
-		overflow: hidden;
+		transform: rotate(-50deg) translate(-18%, 100%);
 		background: black;
 	}
-	.name2 {
-		transform: rotate(-50deg) translate(20%, 100%);
-	}
-	.name > h1,
-	.name > p {
-		max-width: fit-content;
-	}
-	.name:hover {
-		/* z-index: 2; */
-		/* filter: var(--cool-filter); */
-	}
-	h1 {
-		font-weight: bold;
-	}
-
+	
 	h1,
 	p {
 		font-family: 'PP Mondwest Bold';
 		font-size: inherit;
-		/* font-weight: 100; */
 		color: white;
-		text-rendering: optimizeLegibility;
-		/* background-color: #000; */
 		image-rendering: pixelated;
 		filter: var(--cool-filter);
+	}
 
+	:global(body) {
+		background-color: black;
+		background-size: cover;
+		image-rendering: pixelated;
+		image-rendering: crisp-edges;
+		background-repeat: no-repeat;
+		/* max-width: 100rem; */
+		overflow-x: hidden;
+		/* width: 100vw; */
+		/* cool case where overflow-y actually effects */
+		/* (its the name that overflowing on the btm)  */
+		/* overflow-y: hidden; */
+		/* tall screens ONLY */
+		/* max-height: 100vh; */
 	}
-	.japanese {
-		font-family: 'Yu Gothic';
-		font-size: 3rem;
-		text-rendering: auto;
-		color: #fff;
-		text-shadow: 0 0 5px #fff;
-        background-color: black;
-		border-radius: 12px;
-		writing-mode: vertical-rl;
-	}
-	
+
 	/* write a media query that applys styles to desktop screens */
 	@media (min-width: 1024px) {
 		:global(body) {
-			max-height: initial;
-			height: 200vh;
-			overflow-y: auto !important;
+			/* max-height: initial; */
+			/* height: 200vh; */
+			/* overflow-y: auto !important; */
 		}
 		section {
-			height: 200vh;
-			max-height: 200vh;
+			/* height: 200vh; */
+			/* max-height: 200vh; */
 			/* position: relative; */
 		}
-		section::before {
-			height: 200vh;
+		.boxes {
+			/* margin-top: 100vh; */
 		}
 		.about {
-			height: auto !important;
+			/* height: auto !important; */
 			/* position: absolute; */
 		}
 	}
+	/* media query for xl-wide screens that caps the width of the site */
+	/* probably have to change vw units to something else  */
 
-
-		/* make an alternate version of the site with a white background */
-		/* trust me it looks suoer cool */
-	@media(prefers-color-scheme: light) {
+	/* make an alternate version of the site with a white background */
+	/* trust me it looks suoer cool */
+	@media (prefers-color-scheme: light) {
 		:global(body) {
 			background-color: white !important;
 			filter: invert(1);
 		}
-		h1, p {
+		h1,
+		p {
 			background: none !important;
 			/* text-shadow: 0 0 5px black; */
 			/* color: black; */
@@ -215,7 +199,6 @@
 			/* background: white; */
 		}
 		.name {
-
 			/* this is for when i figure out how to make the bubbles black */
 			/* background: black; */
 		}
@@ -223,19 +206,5 @@
 			/* filter: invert(1); */
 			/* filter: var(--invert-filter); */
 		}
-	}
-
-	:global(body) {
-		background-color: black;
-		background-size: cover;
-		image-rendering: pixelated;
-		image-rendering: crisp-edges;
-		background-repeat: no-repeat;
-		overflow-x: hidden;
-		/* cool case where overflow-y actually effects */
-		/* (its the name that overflowing on the btm)  */
-		overflow-y: hidden;
-		/* tall screens ONLY */
-		max-height: 100vh;
 	}
 </style>
