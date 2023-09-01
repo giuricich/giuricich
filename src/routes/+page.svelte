@@ -21,8 +21,8 @@
 	let styles = {
 		shadow: '0 0 1px black',
 		'many-shadows': '0 0 1px black,',
-		'cool-filter': 'drop-shadow(-1px -1px 0 red) drop-shadow(1px 1px 0 blue)',
-		'invert-filter': 'drop-shadow(-1px -1px 0 cyan) drop-shadow(1px 1px 0 yellow)'
+		'cool-filter': 'drop-shadow(-.1vw -.1vw 0 red) drop-shadow(.1vw .1vw 0 blue)',
+		'invert-filter': 'drop-shadow(-.1vw -.1vw 0 cyan) drop-shadow(.1vw .1vw 0 yellow)'
 	};
 
 	styles['many-shadows'] = styles['many-shadows'].repeat(4).slice(0, -1);
