@@ -61,14 +61,18 @@
 			<p>and its much better looking <a href="https://github.com/giuricich/onliClass-darkmode">darkmode cousin</a>... if you can even build it lol</p>
 			<p>cant forget the infinitely scalable <em>all the small things</em> single cover <a href="https://destructive.space">made intierly of css!</a></p>
 		</div>
-		<div class="box contact">
-			<h1 class="middle">more isaac...</h1>
-			<a href="https://github.com/giuricich">github</a>
-			<a href="https://www.linkedin.com/in/isaac-giuricich/">linkedin</a>
-		<a href="mailto:isaac@giuricich.ca">isaac@giuricich.ca</a>
+		<div class="box padding"></div>
+		<div class="rainbow">
+			<img src="rainbow.png" alt="skittles">
 		</div>
 	</div>
 </section>
+<div style={cssVarStyles} class="box" id="contact">
+	<h1 class="middle">more isaac...</h1>
+	<a href="https://github.com/giuricich">github</a>
+	<a href="https://www.linkedin.com/in/isaac-giuricich/">linkedin</a>
+<a href="mailto:isaac@giuricich.ca">isaac@giuricich.ca</a>
+</div>
 
 <style>
 	@import url('reset.css');
@@ -78,6 +82,45 @@
 	}
 	.middle {
 		align-self: center;
+	}
+
+	#contact {
+		align-self: center;
+		/* padding: 10vw; */
+		text-align: center;
+		display: block;
+		width: 100%;
+		/* border: 1; */
+		/* width: 80%; */
+		/* margin-top: 100vh; */
+		/* display: block; */
+		/* position: absolute; */
+		/* bottom: 0; */
+		/* width: 100vw; */
+	}
+	.padding {
+		height: 10vh;
+		visibility: hidden;
+	}
+
+	.rainbow {
+		position: absolute;
+		display: flex;
+		justify-content: center;
+		top: 0vw;
+		/* margin-top: -4vw; */
+		width: 100vw;
+		height: 100%;
+		z-index: -1;
+	}
+
+	.rainbow img {
+		width: 100%;
+		height: 100%;
+		object-fit: fit;
+		image-rendering: pixelated;
+		filter: contrast(1.9) brightness(1) saturate(1);
+		opacity: 0.7;
 	}
 
 
@@ -113,7 +156,7 @@
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		gap: 5vw;
+		gap: 25vw;
 
 		margin-top: 85vw;
 	}
@@ -126,6 +169,9 @@
 		padding: 4vw;
 		width: fit-content;
 	}
+	.box h1 {
+		margin-bottom: 5vw;
+	}
 	.about {
 		align-self: self-end;
 		width: fit-content;
@@ -133,6 +179,7 @@
 	}
 	.showcase {
 		font-size:5vw;
+		width: 80%;
 	}
 	.showcase h1 {
 		font-size: 6vw;
@@ -221,6 +268,9 @@
 			/* text-shadow: 0 0 5px black; */
 			/* color: black; */
 			/* filter: var(--invert-filter); */
+		}
+		.rainbow {
+			filter: invert(1);
 		}
 		.about {
 			/* border: 1px solid black; */
